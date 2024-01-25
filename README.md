@@ -68,4 +68,5 @@ See instruction:
 4. [Create](https://stackoverflow.com/questions/68871952/how-to-use-jpackage-to-make-a-distribution-format-for-javafx-applications) distribution file;
 5. [Пример](https://walczak.it/blog/distributing-javafx-desktop-applications-without-requiring-jvm-using-jlink-and-jpackage) с использованием Gradle;
 6. [Сборка](https://github.com/dlemmermann/JPackageScriptFX);
-7. [Packaging guid](https://docs.oracle.com/en/java/javase/20/jpackage/packaging-tool-user-guide.pdf).
+7. [Packaging guid](https://docs.oracle.com/en/java/javase/21/jpackage/packaging-tool-user-guide.pdf);
+8. [Packaging overview](https://docs.oracle.com/en/java/javase/21/jpackage/packaging-overview.html).
