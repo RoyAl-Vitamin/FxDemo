@@ -42,6 +42,10 @@ mkdir -p target/installer/input/libs && cp target/FxDemo-1.0-SNAPSHOT.jar target
 /home/alex/.jdks/openjdk-21.0.2/bin/jpackage --type app-image --dest target/installer --input target/installer/input/libs --name JPackageScriptFX --main-class vi.al.ro.Main --main-jar FxDemo-1.0-SNAPSHOT.jar --module-path "/home/alex/Documents/javafx-sdk-21/lib" --java-options "-Dprism.order=sw,j2d -Dprism.verbose=true -Xmx2048m" --runtime-image target/java-runtime --app-version 1.0-SNAPSHOT --vendor "RoyalVitamin" --copyright "Copyright © 2024 RAV"
 ```
 
+```bash
+/home/alex/.jdks/openjdk-21.0.2/bin/jpackage --type app-image --dest target/installer --input target/installer/input/libs --name JPackageScriptFX --main-class vi.al.ro.Main --main-jar FxDemo-1.0-SNAPSHOT.jar --module-path "target/java-runtime/lib:/home/alex/Documents/javafx-sdk-21/lib" --java-options "-Dprism.order=sw,j2d -Dprism.verbose=true -Xmx2048m" --runtime-image target/java-runtime --app-version 1.0-SNAPSHOT --vendor "RoyalVitamin" --copyright "Copyright © 2024 RAV"
+```
+
 type: [app-image rpm deb]
 
 Необходимо скопировать библиотеки для запуска следующей командой:
@@ -56,8 +60,6 @@ cp /home/alex/Documents/javafx-sdk-21/lib/libglass.so \
 /home/alex/IdeaProjects/FxDemo/target/installer/JPackageScriptFX/lib/app/
 ```
 
--Djava.library.path добавить путь до JavaFxSdk???
-
 ## How to debug app
 
 See instruction:
@@ -70,3 +72,28 @@ See instruction:
 6. [Сборка](https://github.com/dlemmermann/JPackageScriptFX);
 7. [Packaging guid](https://docs.oracle.com/en/java/javase/21/jpackage/packaging-tool-user-guide.pdf);
 8. [Packaging overview](https://docs.oracle.com/en/java/javase/21/jpackage/packaging-overview.html).
+
+Не хватает либ для отрисовки (надо как-то добавить в аргументы):
+
+```bash
+/home/alex/.jdks/openjdk-21.0.2/bin/jlink --output target/java-runtime --module-path "/home/alex/Documents/javafx-sdk-21/lib" --add-modules "java.base,jdk.localedata,javafx.controls,javafx.fxml"
+```
+
+```bash
+mkdir -p target/lib && cp target/FxDemo.jar target/lib/FxDemo.jar
+```
+
+```bash
+/home/alex/.jdks/openjdk-21.0.2/bin/jpackage --type app-image --name FxDemo --input target/lib --main-jar FxDemo.jar --runtime-image target/java-runtime --main-class vi.al.ro.Main --dest target/installer --java-options "-Dprism.order=sw,j2d -Dprism.verbose=true -Xmx2048m"
+```
+
+Копирование либ для отрисовки (подключить как модуль sw, j2d?):
+```bash
+cp /home/alex/Documents/javafx-sdk-21/lib/libglass.so \
+/home/alex/Documents/javafx-sdk-21/lib/libglassgtk3.so \
+/home/alex/Documents/javafx-sdk-21/lib/libjavafx_font.so \
+/home/alex/Documents/javafx-sdk-21/lib/libjavafx_font_freetype.so \
+/home/alex/Documents/javafx-sdk-21/lib/libjavafx_font_pango.so \
+/home/alex/Documents/javafx-sdk-21/lib/libprism_sw.so \
+/home/alex/IdeaProjects/FxDemo/target/installer/FxDemo/lib/runtime/lib
+```
