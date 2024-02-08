@@ -17,10 +17,10 @@ mvn clean javafx:run
 
 ## Собираем в исполняемое приложение
 
-`$JAVA_HOME` - местоположение Java 21 в системе (Пример: /home/username/.jdks/openjdk-21.0.2).
-`$PATH_TO_FX` - местоположение Java FX SDK (Пример: /home/username/.jdks/javafx-sdk-21/lib).
+`$JAVA_HOME` - местоположение Java 21 в системе (Пример: /home/username/.jdks/openjdk-21.0.2).  
+`$PATH_TO_FX` - местоположение Java FX SDK (Пример: /home/username/.jdks/javafx-sdk-21/lib).  
 `$PATH_TO_FX_MODS` - местоположение Java FX jmods (Собранного окружения для сборки независимого приложения, пример: 
-/home/username/.jdks/javafx-jmods-21.0.2)
+/home/username/.jdks/javafx-jmods-21.0.2)  
 
 Получить список зависимостей проекта:
 
@@ -61,4 +61,4 @@ $JAVA_HOME/bin/jpackage --type app-image --name FxDemo --input target/lib --main
 6. [Сборка](https://github.com/dlemmermann/JPackageScriptFX);
 7. [Packaging guid](https://docs.oracle.com/en/java/javase/21/jpackage/packaging-tool-user-guide.pdf);
 8. [Packaging overview](https://docs.oracle.com/en/java/javase/21/jpackage/packaging-overview.html);
-9. [Распечатка всех модулей](https://onecompiler.com/questions/3ss6yr2as/how-to-print-all-module-names-with-packages-in-java9)
+9. [Распечатка всех модулей](https://onecompiler.com/questions/3ss6yr2as/how-to-print-all-module-names-with-packages-in-java9).
